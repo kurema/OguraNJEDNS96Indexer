@@ -250,3 +250,10 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# Copyrighted files.
+dump.txt
+main.html
+CATALOGS
+HONMON
+OGNSJE/

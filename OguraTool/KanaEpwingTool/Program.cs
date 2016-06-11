@@ -93,11 +93,19 @@ namespace KanaEpwingTool
             }
             Console.WriteLine("</body></html>");
 
-            foreach(var kvp in genreList)
+            if (args.Count() > 0)
             {
-                if (kvp.Value > 4)
+                using (var sw = new System.IO.StreamWriter(args[0],false,System.Text.Encoding.GetEncoding("shift_jis")))
                 {
-                    //Console.WriteLine(kvp.Key);
+                    sw.Write("<?xml version=\"1.0\" encoding=\"Shift_JIS\"?><complex><group name=\"ジャンル検索\"><category name=\"ジャンル\">");
+                    foreach (var kvp in genreList)
+                    {
+                        if (kvp.Value > 2)
+                        {
+                            sw.WriteLine("<subcategory name=\""+kvp.Key+"\">");
+                        }
+                    }
+                    sw.WriteLine("</category><keyword name=\"キーワード1\" /><keyword name=\"キーワード2\" /></group></complex>");
                 }
             }
         }
